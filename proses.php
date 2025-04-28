@@ -1,26 +1,26 @@
 <?php
 include 'koneksi.php';
 
-// Ambil produk dari database
-$produk = [];
-$qProduk = mysqli_query($koneksi, "SELECT * FROM produk");
-while ($row = mysqli_fetch_assoc($qProduk)) {
-    $produk[] = $row;
+// Ambil kategori dari database
+$kategori = [];
+$qKategori = mysqli_query($koneksi, "SELECT * FROM kategori");
+while ($row = mysqli_fetch_assoc($qKategori)) {
+    $kategori[] = $row;
 }
 
 // Proses form submit
 $rekomendasi = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama = $_POST['nama'];
-    $produk_disukai = isset($_POST['produk']) ? $_POST['produk'] : [];
+    $kategori_disukai = isset($_POST['kategori']) ? $_POST['kategori'] : [];
 
     // Simpan user baru
     mysqli_query($koneksi, "INSERT INTO users (nama) VALUES ('$nama')");
     $user_id_baru = mysqli_insert_id($koneksi);
 
-    // Simpan produk yang disukai
-    foreach ($produk_disukai as $id_produk) {
-        mysqli_query($koneksi, "INSERT INTO user_produk (user_id, produk_id) VALUES ($user_id_baru, $id_produk)");
+    // Simpan kategori yang disukai
+    foreach ($kategori_disukai as $id_kategori) {
+        mysqli_query($koneksi, "INSERT INTO user_kategori (user_id, kategori_id) VALUES ($user_id_baru, $id_kategori)");
     }
 
     // Ambil semua user
@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     while ($row = mysqli_fetch_assoc($qUsers)) {
         $users[$row['id']] = [
             'nama' => $row['nama'],
-            'produk' => []
+            'kategori' => []
         ];
     }
 
-    // Ambil semua user_produk
-    $qUserProduk = mysqli_query($koneksi, "SELECT * FROM user_produk");
-    while ($row = mysqli_fetch_assoc($qUserProduk)) {
-        $users[$row['user_id']]['produk'][] = $row['produk_id'];
+    // Ambil semua user_kategori
+    $qUserKategori = mysqli_query($koneksi, "SELECT * FROM user_kategori");
+    while ($row = mysqli_fetch_assoc($qUserKategori)) {
+        $users[$row['user_id']]['kategori'][] = $row['kategori_id'];
     }
 
     // Hitung kemiripan (Cosine Similarity sederhana)
@@ -46,12 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($users as $id => $data) {
         if ($id == $user_id_baru) continue; // Jangan dibandingkan dengan diri sendiri
 
-        $produk_lama = $data['produk'];
-        $produk_baru = $users[$user_id_baru]['produk'];
+        $kategori_lama = $data['kategori'];
+        $kategori_baru = $users[$user_id_baru]['kategori'];
 
-        $dot = count(array_intersect($produk_lama, $produk_baru));
-        $norma_lama = sqrt(count($produk_lama));
-        $norma_baru = sqrt(count($produk_baru));
+        $dot = count(array_intersect($kategori_lama, $kategori_baru));
+        $norma_lama = sqrt(count($kategori_lama));
+        $norma_baru = sqrt(count($kategori_baru));
 
         if ($norma_lama != 0 && $norma_baru != 0) {
             $similarity = $dot / ($norma_lama * $norma_baru);
@@ -62,14 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Cari produk yang belum dipilih user baru tapi dipilih user mirip
+    // Cari kategori yang belum dipilih user baru tapi dipilih user mirip
     if ($user_mirip_id != 0) {
-        $produk_mirip = $users[$user_mirip_id]['produk'];
-        foreach ($produk_mirip as $p) {
-            if (!in_array($p, $users[$user_id_baru]['produk'])) {
-                $qNamaProduk = mysqli_query($koneksi, "SELECT nama_produk FROM produk WHERE id=$p");
-                $hasil = mysqli_fetch_assoc($qNamaProduk);
-                $rekomendasi[] = $hasil['nama_produk'];
+        $kategori_mirip = $users[$user_mirip_id]['kategori'];
+        foreach ($kategori_mirip as $p) {
+            if (!in_array($p, $users[$user_id_baru]['kategori'])) {
+                $qNamaKategori = mysqli_query($koneksi, "SELECT nama_kategori FROM kategori WHERE id=$p");
+                $hasil = mysqli_fetch_assoc($qNamaKategori);
+                $rekomendasi[] = $hasil['nama_kategori'];
             }
         }
     }

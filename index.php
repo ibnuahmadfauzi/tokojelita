@@ -6,6 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Rekomendasi Produk</title>
+
+    <!-- Memanggil file bootstrap -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- Memanggil file CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,9 +23,9 @@
             <label>Nama:</label><br>
             <input type="text" name="nama" required><br><br>
 
-            <label>Pilih Produk yang Disukai:</label><br>
-            <?php foreach ($produk as $p) : ?>
-                <input type="checkbox" name="produk[]" value="<?php echo $p['id']; ?>"> <?php echo $p['nama_produk']; ?><br>
+            <label>Pilih kategori produk yang Disukai:</label><br>
+            <?php foreach ($kategori as $p) : ?>
+                <input type="checkbox" name="kategori[]" value="<?php echo $p['id']; ?>"> <?php echo $p['nama_kategori']; ?><br>
             <?php endforeach; ?>
             <br>
             <button type="submit">Dapatkan Rekomendasi</button>
@@ -37,6 +42,9 @@
             <h2>Tidak ada rekomendasi tambahan untuk <?php echo htmlspecialchars($nama); ?>.</h2>
         <?php endif; ?>
     </div>
+
+    <!-- Memanggil file Bootstrap -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

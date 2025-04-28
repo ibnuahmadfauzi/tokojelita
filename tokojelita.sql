@@ -3,26 +3,26 @@ CREATE TABLE users (
     nama VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE produk (
+CREATE TABLE kategori (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nama_produk VARCHAR(100) NOT NULL
+    nama_kategori VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE user_produk (
+CREATE TABLE user_kategori (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    produk_id INT,
+    kategori_id INT,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (produk_id) REFERENCES produk(id)
+    FOREIGN KEY (kategori_id) REFERENCES kategori(id)
 );
 
--- Insert produk
-INSERT INTO produk (nama_produk) VALUES 
+-- Insert kategori
+INSERT INTO kategori (nama_kategori) VALUES 
 ('Hoodie'), ('Kaos'), ('Jaket'), ('Celana'), ('Sepatu');
 
 -- Insert user Joseph Walker
 INSERT INTO users (nama) VALUES ('Joseph Walker');
 
 -- Joseph Walker suka Hoodie (id=1) dan Kaos (id=2)
-INSERT INTO user_produk (user_id, produk_id) VALUES
+INSERT INTO user_kategori (user_id, kategori_id) VALUES
 (1, 1), (1, 2);
