@@ -57,6 +57,171 @@
         <h3 class="p-0 m-0 text-center">advertisement</h3>
     </div>
 
+    <!-- elemen kategori -->
+    <div class="kategori-container container mt-3 d-flex justify-content-center flex-wrap align-items-stretch">
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Sneakers</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Sandal</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Celana jeans</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Celana chinos</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Celana bahan / formal</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Celana pendek</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Kaos</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Kemeja lengan panjang</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Blouse</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Sweater</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Hoodie</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Jaket</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Cardigan</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Tank top</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Crop top</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Jas / blazer</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Tote bag</span>
+            </div>
+        </a>
+
+        <a href="#" class="text-decoration-none">
+            <div class="box-kategori p-2 rounded-2">
+                <div class="d-flex justify-content-center">
+                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+                </div>
+                <span class="d-block">Handbag</span>
+            </div>
+        </a>
+    </div>
+
     <!-- memanggil file bootstrap -->
     <script src="assets/bootstrap/js/bootstrap.js"></script>
 

@@ -29,5 +29,20 @@ body {
 .advertisement-container {
   padding: 100px;
   border: 2px solid #373737;
-  border-radius: 20px;
+  border-radius: 10px;
+}
+
+/* kategori kontainer style */
+.kategori-container {
+  padding: 20px;
+  border: 2px solid #373737;
+  border-radius: 10px;
+}
+.kategori-container a {
+  color: salmon;
+}
+.box-kategori {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
 }
