@@ -52,6 +52,11 @@
         </div>
     </nav>
 
+    <!-- elemen advertisement -->
+    <div class="advertisement-container container mt-3">
+        <h3 class="p-0 m-0 text-center">advertisement</h3>
+    </div>
+
     <!-- memanggil file bootstrap -->
     <script src="assets/bootstrap/js/bootstrap.js"></script>
 
