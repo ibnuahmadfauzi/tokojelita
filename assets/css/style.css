@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "pacifico";
+  src: url("../fonts/pacifico/Pacifico-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppins";
+  src: url("../fonts/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* style reset */
+body {
+  font-family: "poppins", sans-serif;
+}
+
+/* bootstrap reset */
+.bg-light {
+  background-color: #ffffff !important;
+}
+.navbar-brand {
+  font-family: "pacifico", serif;
+  color: #555555 !important;
+}

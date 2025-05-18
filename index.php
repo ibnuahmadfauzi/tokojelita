@@ -1,51 +1,62 @@
-<?php include 'proses.php'; ?>
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Rekomendasi Produk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Jelita - Collaborative Filtering</title>
 
-    <!-- Memanggil file bootstrap -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- mengganti favicon -->
+    <link rel="icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
 
-    <!-- Memanggil file CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- memanggil file bootstrap -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+
+    <!-- memanggil font awesome -->
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+
+    <!-- memanggil file css -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="bg-light">
 
-    <div class="container">
-        <h1>Rekomendasi Produk</h1>
+    <!-- elemen navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fa-solid fa-bag-shopping"></i> <span>TokoJelita</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="w-100 d-flex justify-content-center">
+                    <form class="d-flex w-50 border rounded-3" role="search">
+                        <input class="form-control form-control-sm border-0 me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-sm border-0" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <form method="post" action="">
-            <label>Nama:</label><br>
-            <input type="text" name="nama" required><br><br>
+    <!-- memanggil file bootstrap -->
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
 
-            <label>Pilih kategori produk yang Disukai:</label><br>
-            <?php foreach ($kategori as $p) : ?>
-                <input type="checkbox" name="kategori[]" value="<?php echo $p['id']; ?>"> <?php echo $p['nama_kategori']; ?><br>
-            <?php endforeach; ?>
-            <br>
-            <button type="submit">Dapatkan Rekomendasi</button>
-        </form>
-
-        <?php if (!empty($rekomendasi)) : ?>
-            <h2>Rekomendasi untuk <?php echo htmlspecialchars($nama); ?>:</h2>
-            <ul>
-                <?php foreach ($rekomendasi as $r) : ?>
-                    <li><?php echo $r; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php elseif (isset($rekomendasi)) : ?>
-            <h2>Tidak ada rekomendasi tambahan untuk <?php echo htmlspecialchars($nama); ?>.</h2>
-        <?php endif; ?>
-    </div>
-
-    <!-- Memanggil file Bootstrap -->
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <!-- memanggil file fontawesome -->
+    <script src="assets/fontawesome/js/all.js"></script>
 </body>
 
 </html>
