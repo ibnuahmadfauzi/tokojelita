@@ -1,3 +1,5 @@
+<?php require('config/conn.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,168 +60,183 @@
     </div>
 
     <!-- elemen kategori -->
+    <div class="container">
+        <h5 class="mt-4 fw-semibold">Kategori</h5>
+    </div>
     <div class="kategori-container container mt-3 d-flex justify-content-center flex-wrap align-items-stretch">
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Sneakers</span>
-            </div>
-        </a>
+        <?php
+        $sql = "SELECT * FROM kategori";
+        $result = mysqli_query($conn, $sql);
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Sandal</span>
-            </div>
-        </a>
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+                <a href="#" class="text-decoration-none m-2">
+                    <div class="card" style="width: 150px;">
+                        <div class="card-body text-center">
+                            <img src="assets/images/kategori/<?php echo $row['icon']; ?>" class="mb-3" style="height: 50px;">
+                            <p class="m-0 p-0">
+                                <?php echo $row['nama']; ?>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+        <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        ?>
+    </div>
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Celana jeans</span>
-            </div>
-        </a>
+    <div class="container">
+        <h5 class="mt-4 fw-semibold">Produk Populer</h5>
+    </div>
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Celana chinos</span>
-            </div>
-        </a>
+    <div class="container-produk-populer container">
+        <div class="row">
+            <?php
+            $sql = "SELECT * FROM produk";
+            $result = mysqli_query($conn, $sql);
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Celana bahan / formal</span>
-            </div>
-        </a>
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 100%;">
+                            <img src="<?php echo $row['gambar']; ?>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $row['nama']; ?></h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                <a href="#" class="btn btn-primary">Buka Produk</a>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Celana pendek</span>
-            </div>
-        </a>
+        </div>
+    </div>
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Kaos</span>
-            </div>
-        </a>
+    <div class="container">
+        <h5 class="mt-4 fw-semibold">Produk Rekomendasi</h5>
+    </div>
+    <div class="py-4 mb-5">
+        <?php
+        $pdo = new PDO("mysql:host=localhost;dbname=db_tokojelita", "root", "");
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Kemeja lengan panjang</span>
-            </div>
-        </a>
+        // ID user aktif (misalnya Ibnu = id 1)
+        $userId = 1;
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Blouse</span>
-            </div>
-        </a>
+        // Ambil rating user aktif
+        $stmt = $pdo->prepare("SELECT produk_id, rating FROM user_produk_rating WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        $activeRatings = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Sweater</span>
-            </div>
-        </a>
+        // Ambil semua user lain
+        $stmt = $pdo->query("SELECT DISTINCT user_id FROM user_produk_rating WHERE user_id != $userId");
+        $otherUsers = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Hoodie</span>
-            </div>
-        </a>
+        // Fungsi cosine similarity
+        function cosineSimilarity($a, $b)
+        {
+            $dot = 0;
+            $normA = 0;
+            $normB = 0;
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Jaket</span>
-            </div>
-        </a>
+            foreach ($a as $key => $ra) {
+                if (isset($b[$key])) {
+                    $rb = $b[$key];
+                    $dot += $ra * $rb;
+                    $normA += $ra * $ra;
+                    $normB += $rb * $rb;
+                }
+            }
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Cardigan</span>
-            </div>
-        </a>
+            if ($normA == 0 || $normB == 0) return 0;
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Tank top</span>
-            </div>
-        </a>
+            return $dot / (sqrt($normA) * sqrt($normB));
+        }
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Crop top</span>
-            </div>
-        </a>
+        // Hitung similarity tiap user
+        $similarities = [];
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Jas / blazer</span>
-            </div>
-        </a>
+        foreach ($otherUsers as $uid) {
+            $stmt = $pdo->prepare("SELECT produk_id, rating FROM user_produk_rating WHERE user_id = ?");
+            $stmt->execute([$uid]);
+            $ratings = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+            $similar = cosineSimilarity($activeRatings, $ratings);
+            if ($similar > 0) {
+                $similarities[$uid] = $similar;
+            }
+        }
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
-                </div>
-                <span class="d-block">Tote bag</span>
-            </div>
-        </a>
+        // Cari produk yang belum dirating user ini
+        $recommendations = [];
 
-        <a href="#" class="text-decoration-none">
-            <div class="box-kategori p-2 rounded-2">
-                <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-certificate mb-2 d-block"></i>
+        foreach ($similarities as $uid => $similarityScore) {
+            $stmt = $pdo->prepare("
+        SELECT produk_id, rating FROM user_produk_rating
+        WHERE user_id = ? AND produk_id NOT IN (
+            SELECT produk_id FROM user_produk_rating WHERE user_id = ?
+        )
+    ");
+            $stmt->execute([$uid, $userId]);
+            $data = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+
+            foreach ($data as $produkId => $rating) {
+                if (!isset($recommendations[$produkId])) {
+                    $recommendations[$produkId] = 0;
+                }
+                $recommendations[$produkId] += $similarityScore * $rating;
+            }
+        }
+
+        // Tampilkan rekomendasi
+        arsort($recommendations);
+
+        if (count($recommendations) == 0) {
+            echo "<li>Tidak ada rekomendasi saat ini.</li>";
+        } else {
+        ?>
+            <div class="container">
+                <div class="row">
+                    <?php
+                    foreach ($recommendations as $produkId => $skor) {
+                        $stmt = $pdo->prepare("SELECT nama FROM produk WHERE id = ?");
+                        $stmt->execute([$produkId]);
+                        $nama = $stmt->fetchColumn();
+                    ?>
+                        <div class="col-sm-3">
+                            <div class="card" style="width: 100%;">
+                                <img src="#" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $nama; ?></h5>
+                                    <p class="card-text"><?php echo round($skor, 2); ?></p>
+                                    <a href="#" class="btn btn-primary">Buka Produk</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <span class="d-block">Handbag</span>
             </div>
-        </a>
+        <?php
+        }
+        echo "</ul>";
+        ?>
+    </div>
+
+
+
+    <!-- copyright -->
+    <div class="p-2">
+        <p class="m-0 p-0 text-center">&copy; Copyright - <?php echo date("Y"); ?></p>
     </div>
 
     <!-- memanggil file bootstrap -->

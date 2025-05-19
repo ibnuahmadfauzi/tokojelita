@@ -28,21 +28,8 @@ body {
 /* advertisement container style */
 .advertisement-container {
   padding: 100px;
-  border: 2px solid #373737;
-  border-radius: 10px;
+  border: 1px solid #cecece;
+  border-radius: 5px;
 }
 
 /* kategori kontainer style */
-.kategori-container {
-  padding: 20px;
-  border: 2px solid #373737;
-  border-radius: 10px;
-}
-.kategori-container a {
-  color: salmon;
-}
-.box-kategori {
-  width: 100px;
-  text-align: center;
-  display: inline-block;
-}
