@@ -39,7 +39,7 @@
                 </div>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-user"></i></a>
+                        <a class="nav-link" aria-current="page" href="profil.php"><i class="fa-solid fa-user"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
