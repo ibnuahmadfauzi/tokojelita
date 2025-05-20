@@ -9,6 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- mengganti favicon -->
+    <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon">
+
     <title>Admin - Toko Jelita</title>
 
     <!-- Custom fonts for this template-->

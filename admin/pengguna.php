@@ -1,6 +1,15 @@
 <?php include('navbar.php'); ?>
 <?php require('../config/conn.php'); ?>
 
+<?php
+session_start();
+
+if (isset($_SESSION['adminid'])) {
+} else {
+    header("Location: login.php");
+}
+?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -27,7 +36,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Pengguna</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                                class="fas fa-download fa-sm text-white-50"></i> Tambah Pengguna</a>
                     </div>
 
                     <div class="card shadow mb-4">
@@ -82,20 +91,6 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
-        </div>
-        <!-- End of Content Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <?php include('footer.php'); ?>
+            <?php include('footer.php'); ?>
