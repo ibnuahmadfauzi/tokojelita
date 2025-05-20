@@ -126,7 +126,6 @@ if (isset($_SESSION["userid"])) {
         $userId = 0;
     }
 
-    echo $userId;
 
     // Ambil rating user aktif
     $stmt = $pdo->prepare("SELECT produk_id, rating FROM user_produk_rating WHERE user_id = ?");
