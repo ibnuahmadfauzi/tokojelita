@@ -84,7 +84,7 @@ function tampilkanTerjual($angka)
                             <h5 class="card-title"><?php echo $row['nama']; ?></h5>
                             <p class="text-danger"><?php echo formatRupiah($row['harga']); ?></p>
                             <p><span class="text-secondary"><?php echo tampilkanTerjual($row['terjual']); ?></span></p>
-                            <a href="<?php echo $row['link']; ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Produk</a>
+                            <a href="proses_produk.php?link=<?php echo $row['link']; ?>&idproduk=<?php echo $row['id']; ?>&iduser=<?php echo $_SESSION['userid']; ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Produk</a>
                         </div>
                     </div>
                 </div>
