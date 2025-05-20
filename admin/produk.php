@@ -1,6 +1,16 @@
 <?php include('navbar.php'); ?>
 <?php require('../config/conn.php'); ?>
 
+<?php
+session_start();
+
+if (isset($_SESSION['adminid'])) {
+    header("Location: produk.php");
+} else {
+    header("Location: login.php");
+}
+?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
