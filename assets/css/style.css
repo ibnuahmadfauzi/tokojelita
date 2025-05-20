@@ -24,12 +24,3 @@ body {
   font-family: "pacifico", serif;
   color: #555555 !important;
 }
-
-/* advertisement container style */
-.advertisement-container {
-  padding: 100px;
-  border: 1px solid #cecece;
-  border-radius: 5px;
-}
-
-/* kategori kontainer style */

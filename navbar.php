@@ -45,7 +45,7 @@
                         <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a class="nav-link" aria-current="page" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </li>
                 </ul>
             </div>

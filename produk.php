@@ -1,4 +1,17 @@
 <?php require('config/conn.php'); ?>
+<?php
+// Start the session
+session_start();
+if (isset($_SESSION["userid"])) {
+    if ($_SESSION["userid"] !== 0) {
+    } else {
+        header("Location: login.php");
+    }
+} else {
+    header("Location: login.php");
+}
+
+?>
 
 <!-- elemen navbar -->
 <?php include('navbar.php'); ?>

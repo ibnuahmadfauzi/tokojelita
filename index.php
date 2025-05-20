@@ -1,12 +1,24 @@
 <?php require('config/conn.php'); ?>
+<?php
+// Start the session
+session_start();
+if (isset($_SESSION["userid"])) {
+    if ($_SESSION["userid"] !== 0) {
+    } else {
+        header("Location: login.php");
+    }
+} else {
+    header("Location: login.php");
+}
 
+?>
 
 <!-- elemen navbar -->
 <?php include('navbar.php'); ?>
 
 <!-- elemen advertisement -->
 <div class="advertisement-container container mt-3">
-    <h3 class="p-0 m-0 text-center">advertisement</h3>
+    <img src="assets/images/adv/adv.jpg" class="w-100">
 </div>
 
 <!-- elemen kategori -->
@@ -105,9 +117,16 @@
 <div class="py-4 mb-5">
     <?php
     $pdo = new PDO("mysql:host=localhost;dbname=db_tokojelita", "root", "");
-
+    $userId = 0;
     // ID user aktif (misalnya Ibnu = id 1)
-    $userId = 1;
+    if (isset($_SESSION["userid"])) {
+
+        $userId = $_SESSION["userid"];
+    } else {
+        $userId = 0;
+    }
+
+    echo $userId;
 
     // Ambil rating user aktif
     $stmt = $pdo->prepare("SELECT produk_id, rating FROM user_produk_rating WHERE user_id = ?");
@@ -177,7 +196,13 @@
     arsort($recommendations);
 
     if (count($recommendations) == 0) {
-        echo "<li>Tidak ada rekomendasi saat ini.</li>";
+    ?>
+        <div class="container py-5">
+            <p class="text-center">
+                tidak ada rekomendasi saat ini.
+            </p>
+        </div>
+    <?php
     } else {
     ?>
         <div class="container">
