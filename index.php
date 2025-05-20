@@ -1,6 +1,7 @@
+<!-- mengambil koneksi ke database -->
 <?php require('config/conn.php'); ?>
 <?php
-// Start the session
+// mengambil status login
 session_start();
 if (isset($_SESSION["userid"])) {
     if ($_SESSION["userid"] !== 0) {
@@ -61,6 +62,7 @@ if (isset($_SESSION["userid"])) {
         $sql = "SELECT * FROM produk ORDER BY terjual DESC LIMIT 8";
         $result = mysqli_query($conn, $sql);
 
+        // user define function atau fungsi yang dibuat oleh user
         function formatRupiah($angka)
         {
             return "Rp. " . number_format($angka, 0, ',', '.') . ",-";
@@ -118,7 +120,7 @@ if (isset($_SESSION["userid"])) {
     <?php
     $pdo = new PDO("mysql:host=localhost;dbname=db_tokojelita", "root", "");
     $userId = 0;
-    // ID user aktif (misalnya Ibnu = id 1)
+    // ID user aktif (misalnya joseph = id 1)
     if (isset($_SESSION["userid"])) {
 
         $userId = $_SESSION["userid"];
