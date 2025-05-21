@@ -10,6 +10,35 @@ if (isset($_SESSION['adminid'])) {
 }
 ?>
 
+<?php
+$produkid = 0;
+$produknama = "";
+$produktokoid = 0;
+$produkkategoriid = 0;
+$produkharga = 0;
+$produklinkgambar = "";
+$produklinkproduk = "";
+if (isset($_GET['produkid'])) {
+    $produkid = $_GET['produkid'];
+    $sql = "SELECT * FROM produk WHERE id=$produkid";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            $produknama = $row['nama'];
+            $produktokoid = $row['toko_id'];
+            $produktkategoriid = $row['kategori_id'];
+            $produkharga = $row['harga'];
+            $produklinkgambar = $row['gambar'];
+            $produklinkproduk = $row['link'];
+        }
+    } else {
+        echo "0 results";
+    }
+}
+?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -40,13 +69,14 @@ if (isset($_SESSION['adminid'])) {
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <form action="proses_produk.php" method="post">
+                                <input type="hidden" name="produkid" value="<?php echo $produkid; ?>">
                                 <div class="mb-3">
                                     <label class="form-label">Nama:</label>
-                                    <input type="text" class="form-control" name="namaproduk" placeholder="Nama Produk ..." required>
+                                    <input type="text" class="form-control" name="namaproduk" placeholder="Nama Produk ..." value="<?php echo $produknama; ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Pilih Toko:</label>
-                                    <select name="tokoid" class="form-control" required>
+                                    <select name="tokoid" class="form-control" value="<?php echo $produktokoid; ?>" required>
                                         <?php
                                         $sql = "SELECT * FROM toko";
                                         $result = mysqli_query($conn, $sql);
@@ -67,7 +97,7 @@ if (isset($_SESSION['adminid'])) {
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Pilih Kategori:</label>
-                                    <select name="kategoriid" class="form-control" required>
+                                    <select name="kategoriid" class="form-control" value="<?php echo $produkkategoriid; ?>" required>
                                         <?php
                                         $sql = "SELECT * FROM kategori";
                                         $result = mysqli_query($conn, $sql);
@@ -92,16 +122,16 @@ if (isset($_SESSION['adminid'])) {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Rp.</span>
                                         </div>
-                                        <input type="numbr" class="form-control" name="hargaproduk" required>
+                                        <input type="numbr" class="form-control" value="<?php echo $produkharga; ?>" name="hargaproduk" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Link Gambar:</label>
-                                    <input type="text" class="form-control" name="linkgambar" required>
+                                    <input type="text" class="form-control" value="<?php echo $produklinkgambar; ?>" name="linkgambar" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Link Produk:</label>
-                                    <input type="text" class="form-control" name="linkproduk" required>
+                                    <input type="text" class="form-control" name="linkproduk" value="<?php echo $produklinkproduk; ?>" required>
                                 </div>
                                 <div>
                                     <button type="submit" class="btn btn-primary">Simpan Data</button>
