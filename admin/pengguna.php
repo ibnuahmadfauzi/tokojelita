@@ -35,7 +35,7 @@ if (isset($_SESSION['adminid'])) {
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Pengguna</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="pengguna_editor.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Tambah Pengguna</a>
                     </div>
 
@@ -70,8 +70,8 @@ if (isset($_SESSION['adminid'])) {
                                                     <td><?php echo $row['nama']; ?></td>
                                                     <td><?php echo $row['username']; ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-sm btn-warning text-light">Edit</a>
-                                                        <a href="#" class="btn btn-sm btn-danger text-light">Hapus</a>
+                                                        <a href="pengguna_editor.php?penggunaid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning text-light">Edit</a>
+                                                        <a href="hapus_pengguna.php?penggunaid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger text-light">Hapus</a>
                                                     </td>
                                                 </tr>
                                         <?php
