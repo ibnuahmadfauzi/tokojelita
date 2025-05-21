@@ -74,7 +74,7 @@ if (isset($_SESSION['adminid'])) {
                                                     <td><a href="<?php echo $row['link']; ?>" class="btn btn-sm btn-secondary" target="_blank">Akses Produk</a></td>
                                                     <td>
                                                         <a href="produk_editor.php?produkid=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning text-light">Edit</a>
-                                                        <a href="#" class="btn btn-sm btn-danger text-light">Hapus</a>
+                                                        <a href="hapus_produk.php?produkid=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger text-light">Hapus</a>
                                                     </td>
                                                 </tr>
                                         <?php
